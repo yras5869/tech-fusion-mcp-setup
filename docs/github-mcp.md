@@ -38,7 +38,7 @@ Connects GitHub Copilot to GitHub so it can read repositories, pull requests, is
 Open Copilot Chat in Agent mode and try:
 
 ```
-List the open pull requests in the SyscoCorporation org
+List the open pull requests that are assigned to me
 ```
 
 ```
@@ -54,8 +54,7 @@ Show me the last 5 commits on the main branch of <repo-name>
   "command": "npx",
   "args": ["-y", "@modelcontextprotocol/server-github"],
   "env": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:token}",
-    "GITHUB_OWNER": "SyscoCorporation"
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:token}"
   },
   "type": "stdio"
 }

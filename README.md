@@ -50,7 +50,7 @@ Before you begin, make sure you have the following installed and ready:
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/SyscoCorporation/tech-fusion-mcp-setup.git
+git clone https://github.com/yras5869/tech-fusion-mcp-setup.git
 cd tech-fusion-mcp-setup
 ```
 
