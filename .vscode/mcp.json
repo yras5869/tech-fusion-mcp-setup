@@ -1,0 +1,71 @@
+{
+	"servers": {
+		"github-mcp-server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-github"
+			],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "${input:token}",
+				"GITHUB_OWNER": "SyscoCorporation"
+			},
+			"type": "stdio"
+		},
+		"atlassian-mcp-server": {
+			"type": "http",
+			"url": "https://mcp.atlassian.com/v1/mcp"
+		},
+		"sonarqube-mcp-server": {
+			"command": "npx",
+			"args": ["-y", "sonarqube-mcp-server"],
+			"env": {
+				"SONARQUBE_URL": "https://cqc.cloud.sysco.net/",
+				"SONARQUBE_TOKEN": "${input:sonar_token}",
+				"SONARQUBE_ORGANIZATION": ""
+			}
+    	},
+		"postgres-mcp-server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-postgres",
+				"${input:db_connection_string}"
+			],
+			"env": {
+				"READ_ONLY": "true"
+			}
+    	},
+		"memory-mcp-server": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-memory"
+			],
+			"env": {
+				"MEMORY_FILE_PATH": "memory.jsonl"
+			},
+			"type": "stdio"
+		},
+	},
+	"inputs": [
+		{
+			"id": "token",
+			"type": "promptString",
+			"description": "GitHub personal access token",
+			"password": true
+		},
+		{
+			"id": "sonar_token",
+			"type": "promptString",
+			"description": "SonarQube personal access token",
+			"password": true
+		},
+		{
+			"id": "db_connection_string",
+			"type": "promptString",
+			"description": "Database connection string in the format postgresql://username:password@host:port/database",
+			"password": true
+		}
+	]
+}
