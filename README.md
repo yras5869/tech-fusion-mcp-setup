@@ -24,6 +24,24 @@ Before you begin, make sure you have the following installed and ready:
 | [Node.js](https://nodejs.org/) | 18+ | Required to run `npx`-based MCP servers |
 | GitHub Copilot | Latest | Sign in to your GitHub account in VS Code |
 | A GitHub Personal Access Token | — | [Create one here](https://github.com/settings/tokens) — needs `repo`, `read:org` scopes |
+| Git | Any | [Download](https://git-scm.com/downloads) — pre-installed on macOS/Linux; Windows users install Git for Windows |
+
+### Platform-specific notes
+
+**MacOS**
+- Node.js is best installed via [Homebrew](https://brew.sh/): `brew install node`
+- The `code` CLI command is available after running **Shell Command: Install 'code' command in PATH** from the VS Code Command Palette
+- `npx` is bundled with Node.js — no extra install needed
+
+**Windows**
+- Install Node.js using the [official Windows installer](https://nodejs.org/en/download) — choose the LTS version
+- After installing, open a new **PowerShell** or **Command Prompt** window so `npx` is on your PATH
+- Use **Git for Windows** (includes Git Bash) — [download here](https://gitforwindows.org/)
+- The `code .` command works in both PowerShell and Git Bash after VS Code installation
+- If `npx` is blocked by execution policy, run this in PowerShell as Administrator:
+  ```powershell
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+  ```
 
 ---
 
@@ -49,7 +67,14 @@ Before you begin, make sure you have the following installed and ready:
 
 ### 1. Clone this repository
 
+**MacOS / Linux**
 ```bash
+git clone https://github.com/yras5869/tech-fusion-mcp-setup.git
+cd tech-fusion-mcp-setup
+```
+
+**Windows (PowerShell or Git Bash)**
+```powershell
 git clone https://github.com/yras5869/tech-fusion-mcp-setup.git
 cd tech-fusion-mcp-setup
 ```
@@ -60,13 +85,17 @@ cd tech-fusion-mcp-setup
 code .
 ```
 
+> **Windows:** If `code .` is not recognized, open VS Code manually and use **File → Open Folder** to select the cloned directory.
+
 ### 3. Open the MCP config
 
 The `.vscode/mcp.json` file at the root of this repo defines all MCP servers. VS Code reads this automatically when you open the folder.
 
 ### 4. Start an MCP server
 
-Open the Command Palette (`Cmd+Shift+P`) and run:
+Open the Command Palette and run:
+- **Mac:** `Cmd+Shift+P`
+- **Windows:** `Ctrl+Shift+P`
 
 ```
 MCP: List Servers
@@ -76,7 +105,9 @@ Click **Start** next to any server. VS Code will prompt you for any required sec
 
 ### 5. Use Copilot with MCP
 
-Open a Copilot Chat panel (`Cmd+Ctrl+I`), switch to **Agent mode**, and try a prompt like:
+Open a Copilot Chat panel, switch to **Agent mode**, and try a prompt like:
+- **MacOS:** `Cmd+Ctrl+I`
+- **Windows:** `Ctrl+Alt+I`
 
 ```
 List my open GitHub pull requests
