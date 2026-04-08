@@ -17,6 +17,28 @@ Connects GitHub Copilot to a PostgreSQL database in **read-only** mode, allowing
 
 ## Setup
 
+### Workshop Database (Supabase)
+
+[Supabase](https://supabase.com) is used to demonstrate the Postgres MCP in this workshop because it offers a free hosted PostgreSQL database — no infrastructure setup required.
+
+> In a real-world scenario, you would connect to your own application database wherever it is hosted (AWS RDS, Azure Database for PostgreSQL, on-premise, etc.). The setup steps are the same — just swap in your connection string.
+
+**Connection method:** Use the **Session Pooler** connection string from your Supabase project.
+
+To get it:
+1. Go to your [Supabase dashboard](https://supabase.com/dashboard) → your project
+2. Navigate to **Project Settings** → **Database**
+3. Under **Connection string**, select the **Session pooler** tab
+4. Copy the URI — it looks like:
+
+```
+postgresql://postgres.[project-ref]:[password]@aws-0-[region].pooler.supabase.com:5432/postgres
+```
+
+> Use the **Session pooler** (port `5432`) rather than the direct connection or transaction pooler, as it works best with tools like the MCP server that hold connections open.
+
+---
+
 ### 1. Gather Your Connection String
 
 You'll need a PostgreSQL connection string in this format:
